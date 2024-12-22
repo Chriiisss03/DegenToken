@@ -1,99 +1,197 @@
-# DegenToken Smart Contract
+# EcoGem Token Smart Contract
 
-**DegenToken** (`DGN`) is an ERC20-compliant token designed for managing a maximum-supply cryptocurrency. This contract enables minting, burning, and transferring tokens, enforcing a strict cap to ensure token scarcity.
+**EcoGem** is an ERC20-compliant token with functionality for minting, burning, and transferring tokens. Built with OpenZeppelin's ERC20 library, the contract enforces a strict maximum supply to maintain token scarcity.  
 
 ---
 
 ## Features
 
-### **Minting Tokens**
-- **Admin-only Access:** Only the admin can mint new tokens.
-- **Maximum Supply Limit:** The total supply cannot exceed **300,000 DGN**.
+1. **Minting Tokens**  
+   - Only the admin can mint tokens.  
+   - Total supply cannot exceed a predefined maximum of **500,000 EGM**.
 
-### **Burning Tokens**
-- **Token Holders Control:** Any token holder can burn their own tokens to permanently reduce the circulating supply.
+2. **Burning Tokens**  
+   - Token holders can burn their tokens to permanently reduce the circulating supply.
 
-### **Token Transfers**
-- Standard ERC20 token transfer functionality is supported.
+3. **Token Transfers**  
+   - Supports standard ERC20 token transfers between users.
 
 ---
 
 ## Contract Details
-- **Token Name:** DegenToken  
-- **Symbol:** DGN  
-- **Maximum Supply:** 300,000 DGN  
-- **Initial Supply:** Configurable during deployment  
+
+- **Token Name**: EcoGem  
+- **Symbol**: EGM  
+- **Maximum Supply**: 500,000 EGM  
+- **Initial Supply**: Configurable during deployment  
 
 ---
 
 ## Functions
 
-### **`constructor(uint256 initialSupply)`**
-Initializes the contract and mints the specified `initialSupply` to the deployer's address.  
-#### Parameters:
-- `initialSupply (uint256)`: Number of tokens to mint upon deployment.
+### **constructor(uint256 initialSupply)**  
+Initializes the contract, minting the specified `initialSupply` to the deployer's address.  
+
+**Parameters**:  
+- `initialSupply` (uint256): Number of tokens to mint upon deployment.  
 
 ---
 
-### **`mintTokens(address recipient, uint256 amount)`**
-Allows the admin to mint new tokens to the specified `recipient` address, subject to the **300,000 DGN** maximum supply cap.  
-#### Modifiers:
-- `onlyAdmin`: Restricts access to the admin.
-- `mintLimit`: Ensures total supply does not exceed the cap.
-#### Parameters:
-- `recipient (address)`: Address to receive the minted tokens.
-- `amount (uint256)`: Number of tokens to mint.
+### **mintTokens(address recipient, uint256 amount)**  
+Allows the admin to mint tokens and transfer them to the specified `recipient`, subject to the maximum supply limit.  
+
+**Modifiers**:  
+- `onlyAdmin`: Restricts function access to the admin.  
+- `mintLimit`: Ensures total supply does not exceed `MAX_SUPPLY`.  
+
+**Parameters**:  
+- `recipient` (address): Address to receive the minted tokens.  
+- `amount` (uint256): Number of tokens to mint.  
 
 ---
 
-### **`sendTokens(address to, uint256 amount)`**
-Transfers tokens from the sender's account to the specified `to` address.  
-#### Parameters:
-- `to (address)`: Recipient's address.
-- `amount (uint256)`: Number of tokens to transfer.  
-#### Returns:
-- `bool`: Returns `true` upon successful transfer.
+### **sendTokens(address to, uint256 amount)**  
+Transfers tokens from the sender's address to the specified `to` address.  
+
+**Parameters**:  
+- `to` (address): Recipient address.  
+- `amount` (uint256): Number of tokens to transfer.  
+
+**Returns**:  
+- `bool`: Returns `true` if the transfer is successful.  
 
 ---
 
-### **`burnTokens(uint256 amount)`**
-Allows token holders to burn their own tokens, reducing the total supply permanently.  
-#### Parameters:
-- `amount (uint256)`: Number of tokens to burn.
+### **burnTokens(uint256 amount)**  
+Enables a token holder to burn a specified amount of their own tokens, reducing the total supply.  
+
+**Parameters**:  
+- `amount` (uint256): Number of tokens to burn.  
 
 ---
 
 ## Events
 
-- **`TokenMinted(address indexed recipient, uint256 amount)`**  
-  Emitted when tokens are successfully minted.  
-- **`TokenBurned(address indexed burner, uint256 amount)`**  
-  Emitted when tokens are successfully burned.
+1. **TokenMinted(address indexed recipient, uint256 amount)**  
+   - Emitted whenever new tokens are minted.  
+
+2. **TokenBurned(address indexed burner, uint256 amount)**  
+   - Emitted whenever tokens are burned.  
 
 ---
 
 ## Usage Notes
 
-- **Initial Deployment:**  
-  Ensure an appropriate `initialSupply` is set when deploying the contract.  
-- **Minting:**  
-  Only the admin (deployer by default) can mint tokens, and the contract enforces the total supply limit.  
-- **Burning & Transfers:**  
-  Token holders can freely burn or transfer their tokens as needed.
+- Ensure the deployer specifies an appropriate initial supply during deployment.  
+- Only the admin can mint tokens, and the total supply cannot exceed **500,000 EGM**.  
+- Token holders have full control over transferring and burning their tokens.  
+
+### Deployment Example (Remix)
+1. Compile the contract using Solidity version `0.8.18`.  
+2. Deploy with an initial supply (e.g., `10000` for 10,000 EGM).  
+3. Use the admin address to mint or manage additional tokens as necessary.  
 
 ---
 
-## Deployment Instructions (Example: Using Remix IDE)
-1. Compile the contract using **Solidity v0.8.18**.  
-2. Deploy with the desired initial supply (e.g., `10000` for 10,000 DGN).  
-3. Use the admin's address to mint or manage tokens.  
+### Authors  
+Metacrafter Chris_Narumi.  
+
+#### License: This project is licensed under the MIT License. See the LICENSE.md file for details.# EcoGem Token Smart Contract
+
+**EcoGem** is an ERC20-compliant token with functionality for minting, burning, and transferring tokens. Built with OpenZeppelin's ERC20 library, the contract enforces a strict maximum supply to maintain token scarcity.  
 
 ---
 
-## Author
-**Metacrafter Chris_Narumi**  
+## Features
 
-## License
-This project is licensed under the **MIT License**. See the `LICENSE.md` file for more details.
+1. **Minting Tokens**  
+   - Only the admin can mint tokens.  
+   - Total supply cannot exceed a predefined maximum of **500,000 EGM**.
 
---- 
+2. **Burning Tokens**  
+   - Token holders can burn their tokens to permanently reduce the circulating supply.
+
+3. **Token Transfers**  
+   - Supports standard ERC20 token transfers between users.
+
+---
+
+## Contract Details
+
+- **Token Name**: EcoGem  
+- **Symbol**: EGM  
+- **Maximum Supply**: 500,000 EGM  
+- **Initial Supply**: Configurable during deployment  
+
+---
+
+## Functions
+
+### **constructor(uint256 initialSupply)**  
+Initializes the contract, minting the specified `initialSupply` to the deployer's address.  
+
+**Parameters**:  
+- `initialSupply` (uint256): Number of tokens to mint upon deployment.  
+
+---
+
+### **mintTokens(address recipient, uint256 amount)**  
+Allows the admin to mint tokens and transfer them to the specified `recipient`, subject to the maximum supply limit.  
+
+**Modifiers**:  
+- `onlyAdmin`: Restricts function access to the admin.  
+- `mintLimit`: Ensures total supply does not exceed `MAX_SUPPLY`.  
+
+**Parameters**:  
+- `recipient` (address): Address to receive the minted tokens.  
+- `amount` (uint256): Number of tokens to mint.  
+
+---
+
+### **sendTokens(address to, uint256 amount)**  
+Transfers tokens from the sender's address to the specified `to` address.  
+
+**Parameters**:  
+- `to` (address): Recipient address.  
+- `amount` (uint256): Number of tokens to transfer.  
+
+**Returns**:  
+- `bool`: Returns `true` if the transfer is successful.  
+
+---
+
+### **burnTokens(uint256 amount)**  
+Enables a token holder to burn a specified amount of their own tokens, reducing the total supply.  
+
+**Parameters**:  
+- `amount` (uint256): Number of tokens to burn.  
+
+---
+
+## Events
+
+1. **TokenMinted(address indexed recipient, uint256 amount)**  
+   - Emitted whenever new tokens are minted.  
+
+2. **TokenBurned(address indexed burner, uint256 amount)**  
+   - Emitted whenever tokens are burned.  
+
+---
+
+## Usage Notes
+
+- Ensure the deployer specifies an appropriate initial supply during deployment.  
+- Only the admin can mint tokens, and the total supply cannot exceed **500,000 EGM**.  
+- Token holders have full control over transferring and burning their tokens.  
+
+### Deployment Example (Remix)
+1. Compile the contract using Solidity version `0.8.18`.  
+2. Deploy with an initial supply (e.g., `10000` for 10,000 EGM).  
+3. Use the admin address to mint or manage additional tokens as necessary.  
+
+---
+
+### Authors  
+Metacrafter Chris_Narumi.  
+
+#### License: This project is licensed under the MIT License. See the LICENSE.md file for details.
